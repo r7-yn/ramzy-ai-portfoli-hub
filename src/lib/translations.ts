@@ -1,6 +1,18 @@
 export type Lang = "en" | "ar" | "zh";
 
-export const translations = {
+type Dict = {
+  nav: { about: string; skills: string; projects: string; experience: string; contact: string };
+  hero: { greeting: string; name: string; title: string; tagline: string; ctaPrimary: string; ctaSecondary: string; stats: { projects: string; years: string; satisfaction: string } };
+  about: { eyebrow: string; title: string; body: string; languages: string };
+  skills: { eyebrow: string; title: string; technical: string; soft: string };
+  projects: { eyebrow: string; title: string; view: string; featured: string };
+  experience: { eyebrow: string; title: string; work: string; education: string };
+  contact: { eyebrow: string; title: string; subtitle: string; name: string; email: string; subject: string; message: string; send: string; sending: string; success: string; error: string; orChat: string };
+  chat: { title: string; placeholder: string; welcome: string; send: string };
+  footer: { rights: string; built: string };
+};
+
+export const translations: Record<Lang, Dict> = {
   en: {
     nav: { about: "About", skills: "Skills", projects: "Projects", experience: "Experience", contact: "Contact" },
     hero: {
@@ -145,6 +157,6 @@ export const translations = {
     },
     footer: { rights: "版权所有。", built: "在也门用心打造 🇾🇪" },
   },
-} as const;
+};
 
-export type TranslationKey = typeof translations.en;
+export type TranslationKey = Dict;
