@@ -14,7 +14,90 @@ export type Database = {
   }
   public: {
     Tables: {
-      [_ in never]: never
+      contact_messages: {
+        Row: {
+          created_at: string
+          email: string
+          id: string
+          message: string
+          name: string
+          subject: string | null
+        }
+        Insert: {
+          created_at?: string
+          email: string
+          id?: string
+          message: string
+          name: string
+          subject?: string | null
+        }
+        Update: {
+          created_at?: string
+          email?: string
+          id?: string
+          message?: string
+          name?: string
+          subject?: string | null
+        }
+        Relationships: []
+      }
+      conversations: {
+        Row: {
+          created_at: string
+          id: string
+          is_user: boolean
+          language: string | null
+          message: string
+          session_id: string
+        }
+        Insert: {
+          created_at?: string
+          id?: string
+          is_user: boolean
+          language?: string | null
+          message: string
+          session_id: string
+        }
+        Update: {
+          created_at?: string
+          id?: string
+          is_user?: boolean
+          language?: string | null
+          message?: string
+          session_id?: string
+        }
+        Relationships: []
+      }
+      leads: {
+        Row: {
+          created_at: string
+          email: string | null
+          id: string
+          interest: string | null
+          name: string | null
+          phone: string | null
+          source: string
+        }
+        Insert: {
+          created_at?: string
+          email?: string | null
+          id?: string
+          interest?: string | null
+          name?: string | null
+          phone?: string | null
+          source?: string
+        }
+        Update: {
+          created_at?: string
+          email?: string | null
+          id?: string
+          interest?: string | null
+          name?: string | null
+          phone?: string | null
+          source?: string
+        }
+        Relationships: []
+      }
     }
     Views: {
       [_ in never]: never
