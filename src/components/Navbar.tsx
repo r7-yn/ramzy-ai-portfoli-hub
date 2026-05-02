@@ -1,10 +1,13 @@
 import { useState, useEffect } from "react";
+import { Link } from "react-router-dom";
 import { useLang } from "@/contexts/LangContext";
+import { useAuth } from "@/hooks/useAuth";
 import { LangSwitcher } from "./LangSwitcher";
-import { Menu, X } from "lucide-react";
+import { Menu, X, LayoutDashboard } from "lucide-react";
 
 export function Navbar() {
   const { t } = useLang();
+  const { isAdmin } = useAuth();
   const [scrolled, setScrolled] = useState(false);
   const [open, setOpen] = useState(false);
 
@@ -57,6 +60,14 @@ export function Navbar() {
           </div>
 
           <div className="flex items-center gap-2">
+            {isAdmin && (
+              <Link
+                to="/admin"
+                className="hidden sm:inline-flex items-center gap-1.5 rounded-full bg-gradient-primary px-3 py-1.5 text-xs font-semibold text-white shadow-glow hover:opacity-90"
+              >
+                <LayoutDashboard className="h-3.5 w-3.5" /> Admin
+              </Link>
+            )}
             <LangSwitcher />
             <button
               onClick={() => setOpen((o) => !o)}
