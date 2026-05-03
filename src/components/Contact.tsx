@@ -4,6 +4,13 @@ import { Send, Mail, Phone, MapPin } from "lucide-react";
 import { supabase } from "@/integrations/supabase/client";
 import { toast } from "sonner";
 import { z } from "zod";
+import { useSiteSetting, ml } from "@/hooks/useSiteData";
+
+interface ContactInfo {
+  email?: string; phone?: string;
+  location_en?: string; location_ar?: string; location_zh?: string;
+  github?: string; linkedin?: string; whatsapp?: string;
+}
 
 const schema = z.object({
   name: z.string().trim().min(1).max(100),
