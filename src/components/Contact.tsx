@@ -20,7 +20,8 @@ const schema = z.object({
 });
 
 export function Contact() {
-  const { t } = useLang();
+  const { t, lang } = useLang();
+  const { value: info } = useSiteSetting<ContactInfo>("contact");
   const [form, setForm] = useState({ name: "", email: "", subject: "", message: "" });
   const [loading, setLoading] = useState(false);
 
