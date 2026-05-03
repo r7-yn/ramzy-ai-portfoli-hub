@@ -6,6 +6,10 @@ import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import { ProjectsAdmin } from "@/components/admin/ProjectsAdmin";
 import { LeadsAdmin } from "@/components/admin/LeadsAdmin";
 import { MessagesAdmin } from "@/components/admin/MessagesAdmin";
+import { SiteSettingsAdmin } from "@/components/admin/SiteSettingsAdmin";
+import { SkillsAdmin } from "@/components/admin/SkillsAdmin";
+import { ExperienceAdmin } from "@/components/admin/ExperienceAdmin";
+import { CustomSectionsAdmin } from "@/components/admin/CustomSectionsAdmin";
 import { Loader2, LogOut, ArrowLeft, LayoutDashboard } from "lucide-react";
 
 export default function Admin() {
