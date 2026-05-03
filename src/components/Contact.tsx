@@ -76,27 +76,33 @@ export function Contact() {
         <div className="grid lg:grid-cols-[1fr_1.4fr] gap-6">
           {/* Contact info */}
           <div className="space-y-3">
-            <a href="mailto:ramzyalbazel700@gmail.com" className="glass flex items-center gap-4 rounded-2xl p-5 transition hover:border-primary/50">
-              <div className="grid h-11 w-11 place-items-center rounded-xl bg-gradient-primary shadow-glow"><Mail className="h-5 w-5 text-white" /></div>
-              <div>
-                <p className="text-xs text-muted-foreground">Email</p>
-                <p className="font-medium text-sm">ramzyalbazel700@gmail.com</p>
+            {info?.email && (
+              <a href={`mailto:${info.email}`} className="glass flex items-center gap-4 rounded-2xl p-5 transition hover:border-primary/50">
+                <div className="grid h-11 w-11 place-items-center rounded-xl bg-gradient-primary shadow-glow"><Mail className="h-5 w-5 text-white" /></div>
+                <div className="min-w-0">
+                  <p className="text-xs text-muted-foreground">Email</p>
+                  <p className="font-medium text-sm truncate">{info.email}</p>
+                </div>
+              </a>
+            )}
+            {info?.phone && (
+              <a href={`tel:${info.phone}`} className="glass flex items-center gap-4 rounded-2xl p-5 transition hover:border-primary/50">
+                <div className="grid h-11 w-11 place-items-center rounded-xl bg-gradient-primary shadow-glow"><Phone className="h-5 w-5 text-white" /></div>
+                <div>
+                  <p className="text-xs text-muted-foreground">Phone / WhatsApp</p>
+                  <p className="font-medium text-sm">{info.phone}</p>
+                </div>
+              </a>
+            )}
+            {(info?.location_en || info?.location_ar || info?.location_zh) && (
+              <div className="glass flex items-center gap-4 rounded-2xl p-5">
+                <div className="grid h-11 w-11 place-items-center rounded-xl bg-gradient-primary shadow-glow"><MapPin className="h-5 w-5 text-white" /></div>
+                <div>
+                  <p className="text-xs text-muted-foreground">Location</p>
+                  <p className="font-medium text-sm">{ml({ en: info.location_en, ar: info.location_ar, zh: info.location_zh } as any, lang)}</p>
+                </div>
               </div>
-            </a>
-            <a href="tel:+967770774107" className="glass flex items-center gap-4 rounded-2xl p-5 transition hover:border-primary/50">
-              <div className="grid h-11 w-11 place-items-center rounded-xl bg-gradient-primary shadow-glow"><Phone className="h-5 w-5 text-white" /></div>
-              <div>
-                <p className="text-xs text-muted-foreground">Phone / WhatsApp</p>
-                <p className="font-medium text-sm">+967 770 774 107</p>
-              </div>
-            </a>
-            <div className="glass flex items-center gap-4 rounded-2xl p-5">
-              <div className="grid h-11 w-11 place-items-center rounded-xl bg-gradient-primary shadow-glow"><MapPin className="h-5 w-5 text-white" /></div>
-              <div>
-                <p className="text-xs text-muted-foreground">Location</p>
-                <p className="font-medium text-sm">Ibb, Yemen — open to remote</p>
-              </div>
-            </div>
+            )}
             <p className="text-xs text-muted-foreground px-2 leading-relaxed">{t.contact.orChat}</p>
           </div>
 
