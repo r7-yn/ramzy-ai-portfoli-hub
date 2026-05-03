@@ -6,6 +6,10 @@ import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import { ProjectsAdmin } from "@/components/admin/ProjectsAdmin";
 import { LeadsAdmin } from "@/components/admin/LeadsAdmin";
 import { MessagesAdmin } from "@/components/admin/MessagesAdmin";
+import { SiteSettingsAdmin } from "@/components/admin/SiteSettingsAdmin";
+import { SkillsAdmin } from "@/components/admin/SkillsAdmin";
+import { ExperienceAdmin } from "@/components/admin/ExperienceAdmin";
+import { CustomSectionsAdmin } from "@/components/admin/CustomSectionsAdmin";
 import { Loader2, LogOut, ArrowLeft, LayoutDashboard } from "lucide-react";
 
 export default function Admin() {
@@ -58,13 +62,21 @@ export default function Admin() {
       </header>
 
       <main className="container max-w-6xl py-8">
-        <Tabs defaultValue="projects" className="w-full">
-          <TabsList className="glass mb-6">
+        <Tabs defaultValue="site" className="w-full">
+          <TabsList className="glass mb-6 flex-wrap h-auto">
+            <TabsTrigger value="site">Site</TabsTrigger>
             <TabsTrigger value="projects">Projects</TabsTrigger>
+            <TabsTrigger value="skills">Skills</TabsTrigger>
+            <TabsTrigger value="experience">Experience</TabsTrigger>
+            <TabsTrigger value="sections">Custom Sections</TabsTrigger>
             <TabsTrigger value="leads">Leads</TabsTrigger>
             <TabsTrigger value="messages">Messages</TabsTrigger>
           </TabsList>
+          <TabsContent value="site"><SiteSettingsAdmin /></TabsContent>
           <TabsContent value="projects"><ProjectsAdmin /></TabsContent>
+          <TabsContent value="skills"><SkillsAdmin /></TabsContent>
+          <TabsContent value="experience"><ExperienceAdmin /></TabsContent>
+          <TabsContent value="sections"><CustomSectionsAdmin /></TabsContent>
           <TabsContent value="leads"><LeadsAdmin /></TabsContent>
           <TabsContent value="messages"><MessagesAdmin /></TabsContent>
         </Tabs>

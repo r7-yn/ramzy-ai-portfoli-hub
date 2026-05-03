@@ -8,6 +8,7 @@ import { Experience } from "@/components/Experience";
 import { Contact } from "@/components/Contact";
 import { Footer } from "@/components/Footer";
 import { Chatbot } from "@/components/Chatbot";
+import { CustomSections } from "@/components/CustomSections";
 
 const Index = () => {
   return (
@@ -20,6 +21,7 @@ const Index = () => {
           <Skills />
           <Projects />
           <Experience />
+          <CustomSections />
           <Contact />
         </main>
         <Footer />
