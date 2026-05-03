@@ -68,6 +68,93 @@ export type Database = {
         }
         Relationships: []
       }
+      custom_sections: {
+        Row: {
+          created_at: string
+          eyebrow_ar: string | null
+          eyebrow_en: string | null
+          eyebrow_zh: string | null
+          id: string
+          slug: string
+          sort_order: number
+          template: string
+          title_ar: string | null
+          title_en: string
+          title_zh: string | null
+          updated_at: string
+          visible: boolean
+        }
+        Insert: {
+          created_at?: string
+          eyebrow_ar?: string | null
+          eyebrow_en?: string | null
+          eyebrow_zh?: string | null
+          id?: string
+          slug: string
+          sort_order?: number
+          template?: string
+          title_ar?: string | null
+          title_en: string
+          title_zh?: string | null
+          updated_at?: string
+          visible?: boolean
+        }
+        Update: {
+          created_at?: string
+          eyebrow_ar?: string | null
+          eyebrow_en?: string | null
+          eyebrow_zh?: string | null
+          id?: string
+          slug?: string
+          sort_order?: number
+          template?: string
+          title_ar?: string | null
+          title_en?: string
+          title_zh?: string | null
+          updated_at?: string
+          visible?: boolean
+        }
+        Relationships: []
+      }
+      experiences: {
+        Row: {
+          created_at: string
+          id: string
+          kind: string
+          org: string
+          period: string
+          sort_order: number
+          title_ar: string | null
+          title_en: string
+          title_zh: string | null
+          updated_at: string
+        }
+        Insert: {
+          created_at?: string
+          id?: string
+          kind?: string
+          org: string
+          period: string
+          sort_order?: number
+          title_ar?: string | null
+          title_en: string
+          title_zh?: string | null
+          updated_at?: string
+        }
+        Update: {
+          created_at?: string
+          id?: string
+          kind?: string
+          org?: string
+          period?: string
+          sort_order?: number
+          title_ar?: string | null
+          title_en?: string
+          title_zh?: string | null
+          updated_at?: string
+        }
+        Relationships: []
+      }
       leads: {
         Row: {
           created_at: string
@@ -151,6 +238,128 @@ export type Database = {
           title_ar?: string | null
           title_en?: string
           title_zh?: string | null
+          updated_at?: string
+        }
+        Relationships: []
+      }
+      section_items: {
+        Row: {
+          created_at: string
+          date_label: string | null
+          description_ar: string | null
+          description_en: string | null
+          description_zh: string | null
+          id: string
+          image_url: string | null
+          link_label: string | null
+          link_url: string | null
+          meta: Json
+          section_id: string
+          sort_order: number
+          tags: string[]
+          title_ar: string | null
+          title_en: string
+          title_zh: string | null
+          updated_at: string
+        }
+        Insert: {
+          created_at?: string
+          date_label?: string | null
+          description_ar?: string | null
+          description_en?: string | null
+          description_zh?: string | null
+          id?: string
+          image_url?: string | null
+          link_label?: string | null
+          link_url?: string | null
+          meta?: Json
+          section_id: string
+          sort_order?: number
+          tags?: string[]
+          title_ar?: string | null
+          title_en: string
+          title_zh?: string | null
+          updated_at?: string
+        }
+        Update: {
+          created_at?: string
+          date_label?: string | null
+          description_ar?: string | null
+          description_en?: string | null
+          description_zh?: string | null
+          id?: string
+          image_url?: string | null
+          link_label?: string | null
+          link_url?: string | null
+          meta?: Json
+          section_id?: string
+          sort_order?: number
+          tags?: string[]
+          title_ar?: string | null
+          title_en?: string
+          title_zh?: string | null
+          updated_at?: string
+        }
+        Relationships: [
+          {
+            foreignKeyName: "section_items_section_id_fkey"
+            columns: ["section_id"]
+            isOneToOne: false
+            referencedRelation: "custom_sections"
+            referencedColumns: ["id"]
+          },
+        ]
+      }
+      site_settings: {
+        Row: {
+          created_at: string
+          id: string
+          key: string
+          updated_at: string
+          value: Json
+        }
+        Insert: {
+          created_at?: string
+          id?: string
+          key: string
+          updated_at?: string
+          value?: Json
+        }
+        Update: {
+          created_at?: string
+          id?: string
+          key?: string
+          updated_at?: string
+          value?: Json
+        }
+        Relationships: []
+      }
+      skills: {
+        Row: {
+          category: string
+          created_at: string
+          id: string
+          level: number
+          name: string
+          sort_order: number
+          updated_at: string
+        }
+        Insert: {
+          category?: string
+          created_at?: string
+          id?: string
+          level?: number
+          name: string
+          sort_order?: number
+          updated_at?: string
+        }
+        Update: {
+          category?: string
+          created_at?: string
+          id?: string
+          level?: number
+          name?: string
+          sort_order?: number
           updated_at?: string
         }
         Relationships: []
