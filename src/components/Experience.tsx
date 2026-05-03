@@ -1,22 +1,12 @@
 import { useLang } from "@/contexts/LangContext";
 import { Briefcase, GraduationCap } from "lucide-react";
-
-const work = [
-  { role: { en: "System Developer (AI)", ar: "مطوّر أنظمة (ذكاء اصطناعي)", zh: "系统开发者 (AI)" }, org: "National Blood Research Center, Ibb", period: "Nov 2024 – Jan 2025" },
-  { role: { en: "Full Stack Developer", ar: "مطوّر Full Stack", zh: "全栈开发者" }, org: "24 Academy, Ibb", period: "2023 – Present" },
-  { role: { en: "College Instructor", ar: "محاضر جامعي", zh: "大学讲师" }, org: "Universities in Ibb", period: "2025 – Present" },
-  { role: { en: "Mobile App Developer (Freelance)", ar: "مطوّر تطبيقات جوال (Freelance)", zh: "移动应用开发者 (自由职业)" }, org: "Ongoing client project", period: "2025 – Present" },
-];
-
-const education = [
-  { degree: { en: "BSc Information Technology", ar: "بكالوريوس تقنية المعلومات", zh: "信息技术学士" }, org: "University of Science & Technology, Ibb", period: "2022 – 2025" },
-  { degree: { en: "Mikrotik Network Management", ar: "إدارة الشبكات بـ Mikrotik", zh: "Mikrotik 网络管理" }, org: "Modern College, Ibb", period: "2024" },
-  { degree: { en: "Python for Networks & Cybersecurity", ar: "بايثون للشبكات والأمن السيبراني", zh: "Python 网络与网络安全" }, org: "Modern College, Ibb", period: "2022" },
-  { degree: { en: "TOEFL Preparation + High Diploma in English", ar: "تحضير TOEFL + دبلوم عالي إنجليزي", zh: "TOEFL 备考 + 英语高级文凭" }, org: "Speak Now Institute, Ibb", period: "2018 – 2019" },
-];
+import { useExperiences, ml } from "@/hooks/useSiteData";
 
 export function Experience() {
   const { t, lang } = useLang();
+  const all = useExperiences();
+  const work = all.filter(e => e.kind === "work");
+  const education = all.filter(e => e.kind === "education");
 
   return (
     <section id="experience" className="section-pad">
@@ -27,8 +17,8 @@ export function Experience() {
         </div>
 
         <div className="grid lg:grid-cols-2 gap-6">
-          <Timeline icon={Briefcase} title={t.experience.work} items={work.map(w => ({ title: w.role[lang], org: w.org, period: w.period }))} />
-          <Timeline icon={GraduationCap} title={t.experience.education} items={education.map(e => ({ title: e.degree[lang], org: e.org, period: e.period }))} />
+          <Timeline icon={Briefcase} title={t.experience.work} items={work.map(w => ({ title: ml({ en: w.title_en, ar: w.title_ar, zh: w.title_zh } as any, lang), org: w.org, period: w.period }))} />
+          <Timeline icon={GraduationCap} title={t.experience.education} items={education.map(e => ({ title: ml({ en: e.title_en, ar: e.title_ar, zh: e.title_zh } as any, lang), org: e.org, period: e.period }))} />
         </div>
       </div>
     </section>
