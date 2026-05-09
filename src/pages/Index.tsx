@@ -9,11 +9,13 @@ import { Contact } from "@/components/Contact";
 import { Footer } from "@/components/Footer";
 import { Chatbot } from "@/components/Chatbot";
 import { CustomSections } from "@/components/CustomSections";
+import { ReadingProgress } from "@/components/ReadingProgress";
 
 const Index = () => {
   return (
     <LangProvider>
       <div className="min-h-screen">
+        <ReadingProgress />
         <Navbar />
         <main>
           <Hero />

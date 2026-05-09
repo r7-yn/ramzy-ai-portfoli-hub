@@ -79,7 +79,10 @@ function HeroEditor() {
         <div><Label>Top badge</Label><Input value={v.badge ?? ""} onChange={(e) => setV({ ...v, badge: e.target.value })} /></div>
         <div><Label>"Available" label</Label><Input value={v.available_label ?? ""} onChange={(e) => setV({ ...v, available_label: e.target.value })} /></div>
       </div>
-      <div><Label>Photo URL (leave blank for default)</Label><Input value={v.photo_url ?? ""} onChange={(e) => setV({ ...v, photo_url: e.target.value })} /></div>
+      <div className="grid md:grid-cols-2 gap-3">
+        <div><Label>Photo URL (leave blank for default)</Label><Input value={v.photo_url ?? ""} onChange={(e) => setV({ ...v, photo_url: e.target.value })} /></div>
+        <div><Label>CV / Resume URL (PDF)</Label><Input placeholder="/CV_Ramzy_Albazel.pdf" value={v.cv_url ?? ""} onChange={(e) => setV({ ...v, cv_url: e.target.value })} /></div>
+      </div>
       <div className="grid md:grid-cols-3 gap-3">
         <div><Label>GitHub URL</Label><Input value={social.github ?? ""} onChange={(e) => setV({ ...v, social: { ...social, github: e.target.value } })} /></div>
         <div><Label>LinkedIn URL</Label><Input value={social.linkedin ?? ""} onChange={(e) => setV({ ...v, social: { ...social, linkedin: e.target.value } })} /></div>
