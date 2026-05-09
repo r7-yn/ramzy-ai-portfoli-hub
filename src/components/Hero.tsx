@@ -1,11 +1,11 @@
 import { useLang } from "@/contexts/LangContext";
-import { ArrowRight, Sparkles, Github, Linkedin, Mail } from "lucide-react";
+import { ArrowRight, Sparkles, Github, Linkedin, Mail, Download } from "lucide-react";
 import ramzyPhoto from "@/assets/ramzy.png";
 import { useSiteSetting, ml } from "@/hooks/useSiteData";
 
 interface HeroData {
   name?: any; greeting?: any; title?: any; tagline?: any;
-  badge?: string; available_label?: string; photo_url?: string;
+  badge?: string; available_label?: string; photo_url?: string; cv_url?: string;
   social?: { github?: string; linkedin?: string; email?: string };
   stats?: Array<{ value: string; label_en?: string; label_ar?: string; label_zh?: string }>;
 }
@@ -21,6 +21,7 @@ export function Hero() {
   const badge = data?.badge || "Open for freelance & full-time roles";
   const available = data?.available_label || "Available now";
   const photo = data?.photo_url || ramzyPhoto;
+  const cvUrl = data?.cv_url || "/CV_Ramzy_Albazel.pdf";
   const social = data?.social || {};
 
   const stats = (data?.stats?.length ? data.stats : [
@@ -58,6 +59,9 @@ export function Hero() {
               </a>
               <a href="#contact" className="glass inline-flex items-center gap-2 rounded-full px-6 py-3 text-sm font-semibold text-foreground transition hover:border-primary/50 hover:bg-primary/10">
                 {t.hero.ctaSecondary}
+              </a>
+              <a href={cvUrl} download target="_blank" rel="noopener noreferrer" className="glass inline-flex items-center gap-2 rounded-full px-6 py-3 text-sm font-semibold text-foreground transition hover:border-primary/50 hover:bg-primary/10">
+                <Download className="h-4 w-4" /> Download CV
               </a>
             </div>
 

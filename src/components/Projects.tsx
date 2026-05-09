@@ -3,6 +3,7 @@ import { useLang } from "@/contexts/LangContext";
 import { projects as fallbackProjects } from "@/data/projects";
 import { supabase } from "@/integrations/supabase/client";
 import { ArrowUpRight, Github, ExternalLink } from "lucide-react";
+import { ProjectsSkeleton } from "@/components/ProjectsSkeleton";
 
 interface DBProject {
   id: string;
@@ -53,6 +54,7 @@ export function Projects() {
           <h2 className="font-display text-3xl md:text-5xl font-bold text-gradient">{t.projects.title}</h2>
         </div>
 
+        {items === null ? <ProjectsSkeleton /> : (
         <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-5">
           {display
             ? display.map((p, i) => {
@@ -127,6 +129,7 @@ export function Projects() {
                 </article>
               ))}
         </div>
+        )}
       </div>
     </section>
   );
